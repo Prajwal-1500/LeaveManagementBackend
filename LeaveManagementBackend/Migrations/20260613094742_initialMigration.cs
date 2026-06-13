@@ -147,8 +147,6 @@ namespace LeaveManagementBackend.Migrations
                 table: "Users",
                 column: "ManagerId");
         }
-
-        /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(

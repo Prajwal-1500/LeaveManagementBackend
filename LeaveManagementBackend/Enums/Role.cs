@@ -2,9 +2,9 @@
 {
     public enum Role
     {
-        HRAdmin = 1,
-        Manager = 2,
-        Employee = 3
+        HRAdmin = 10,
+        Manager = 11,
+        Employee = 12
     }
 
 }

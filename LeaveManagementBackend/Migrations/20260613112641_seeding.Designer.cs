@@ -4,6 +4,7 @@ using LeaveManagementBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeaveManagementBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260613112641_seeding")]
+    partial class seeding
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -171,7 +174,7 @@ namespace LeaveManagementBackend.Migrations
                             Email = "admin@tx.com",
                             FirstName = "Prajwal",
                             LastName = "Admin",
-                            PasswordHash = "$2a$11$gC4hwP.m6jlcBq64W.JDuuzzoYonee48Cqki3/j4Qg1eUNp02r.m6",
+                            PasswordHash = "Admin123",
                             Role = 10,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -182,7 +185,7 @@ namespace LeaveManagementBackend.Migrations
                             Email = "dhruv@tx.com",
                             FirstName = "Dhruv",
                             LastName = "Manager",
-                            PasswordHash = "$2a$11$6uYOZIQDqFDL0H/oq7xHke4qkOjHQ5CPQFdIZVlnYW49pX9Gh./zu",
+                            PasswordHash = "Dhruv123",
                             Role = 11,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -194,7 +197,7 @@ namespace LeaveManagementBackend.Migrations
                             FirstName = "Rajat",
                             LastName = "Emp",
                             ManagerId = 2,
-                            PasswordHash = "$2a$11$P6pGQQD.78XwrHQzTFIiAu3viDRBZjntoVENerwHXfFc8kPEAzsUq",
+                            PasswordHash = "Rajat123",
                             Role = 12,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });

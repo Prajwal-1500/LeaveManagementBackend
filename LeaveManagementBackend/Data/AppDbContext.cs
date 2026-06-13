@@ -1,5 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using LeaveManagementBackend.Enums;
 using LeaveManagementBackend.Models;
+using Microsoft.EntityFrameworkCore;
 namespace LeaveManagementBackend.Data
 {
     public class AppDbContext : DbContext
@@ -43,6 +44,57 @@ namespace LeaveManagementBackend.Data
                .WithMany(uo => uo.LeaveBalance)
                .HasForeignKey(lbo => lbo.UserId);
 
+            modelBuilder.Entity<User>().HasData(
+                new User
+                {
+                    Id = 1,
+                    FirstName = "Prajwal",
+                    LastName = "Admin",
+                    Email = "admin@tx.com",
+                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin123"),
+                    Role = Role.HRAdmin
+                },
+                 new User
+                 {
+                     Id = 2,
+                     FirstName = "Dhruv",
+                     LastName = "Manager",
+                     Email = "dhruv@tx.com",
+                     PasswordHash = BCrypt.Net.BCrypt.HashPassword("Dhruv123"),
+                     Role = Role.Manager
+                 },
+                  new User
+                  {
+                      Id = 3,
+                      FirstName = "Rajat",
+                      LastName = "Emp",
+                      Email = "rajat@tx.com",
+                      PasswordHash = BCrypt.Net.BCrypt.HashPassword("Rajat123"),
+                      Role = Role.Employee,
+                      ManagerId = 2
+                  }
+
+
+            );
+
+
+            modelBuilder.Entity<LeaveType>().HasData(
+                new LeaveType
+                {
+                    Id = 1,
+                    Name = "Annual Leave"
+                },
+                new LeaveType
+                {
+                    Id = 2,
+                    Name = "Unpaid Leave"
+                },
+                new LeaveType
+                {
+                    Id = 3,
+                    Name = "Sick Leave"
+                }
+            );
         }
     }
 }
