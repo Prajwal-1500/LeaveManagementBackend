@@ -1,5 +1,4 @@
-﻿using System.Data;
-
+﻿using LeaveManagementBackend.Enums;
 namespace LeaveManagementBackend.Models
 {
     public class User
@@ -24,3 +23,4 @@ namespace LeaveManagementBackend.Models
         public DateTime UpdatedAt { get; set; }
     }
 }
+

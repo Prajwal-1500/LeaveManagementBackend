@@ -1,4 +1,5 @@
-﻿namespace LeaveManagementBackend.Models
+﻿using LeaveManagementBackend.Enums;
+namespace LeaveManagementBackend.Models
 {
     public class LeaveRequest
     {
