@@ -14,7 +14,11 @@ Content-Type: application/json
 ###
 
 GET {{LeaveManagementBackend_HostAddress}}/api/leaves/my
+<<<<<<< HEAD
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjMiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJyYWphdEB0eC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJFbXBsb3llZSIsImh0dHA6Ly9zY2hlbWFzLnhtbHNvYXAub3JnL3dzLzIwMDUvMDUvaWRlbnRpdHkvY2xhaW1zL25hbWUiOiJSYWphdCBFbXAiLCJleHAiOjE3ODE0MTYwNzAsImlzcyI6IkxlYXZlTWFuYWdlbWVudEJhY2tlbmQiLCJhdWQiOiJMZWF2ZU1hbmFnZW1lbnRVc2VycyJ9.QkV6OdvfdU_dXDgneQNxXwSODEZDwhKpiJmptFhcT0I
+=======
+Authorization: Bearer 
+>>>>>>> 3b28ebb77240c900ffef68dc0cdadf3a7aeaf53f
 ###
 
 POST {{LeaveManagementBackend_HostAddress}}/api/leaves
