@@ -86,22 +86,90 @@ namespace LeaveManagementBackend.Services.Implementation
         }
 
         public async Task<bool> CancelLeaveAsync(
-            int leaveRequestId,
-            int userId)
+    int leaveRequestId,
+    int userId)
         {
-            throw new NotImplementedException();
+            var leaveRequest = await _leaveRepo
+                .GetByIdAsync(leaveRequestId);
+
+            if (leaveRequest == null)
+            {
+                return false;
+            }
+
+            if (leaveRequest.UserId != userId)
+            {
+                return false;
+            }
+
+            if (leaveRequest.Status != LeaveStatus.Pending)
+            {
+                return false;
+            }
+
+            leaveRequest.Status = LeaveStatus.Cancelled;
+
+            await _leaveRepo.SaveChangesAsync();
+
+            return true;
         }
 
-        public async Task<List<LeaveRequestDto>> GetRepoteesRequestsAsync(
-            int managerId)
+        public async Task<List<LeaveRequestDto>> GetRepoteesRequestsAsync(int managerId)
         {
-            throw new NotImplementedException();
+            var requests = await _leaveRepo.GetRepoteesRequestsAsync(managerId);
+
+            return requests.Select(r => new LeaveRequestDto
+            {
+                Id = r.Id,
+                EmployeeName = $"{r.User.FirstName} {r.User.LastName}",
+                LeaveType = r.LeaveType.Name,
+                StartDate = r.StartDate,
+                EndDate = r.EndDate,
+                Reason = r.Reason,
+                Status = r.Status.ToString()
+            }).ToList();
         }
 
-        public async Task<bool> ApproveLeaveAsync(
-            int leaveRequestId)
+        public async Task<bool> ApproveLeaveAsync(int leaveRequestId)
         {
-            throw new NotImplementedException();
+            var leaveRequest = await _leaveRepo
+                .GetByIdAsync(leaveRequestId);
+
+            if (leaveRequest == null)
+            {
+                return false;
+            }
+
+            if (leaveRequest.Status != LeaveStatus.Pending)
+            {
+                return false;
+            }
+
+            var leaveBalance = await _leaveRepo.GetLeaveBalanceAsync(
+                leaveRequest.UserId,
+                leaveRequest.LeaveTypeId,
+                DateTime.Now.Year);
+
+            if (leaveBalance == null)
+            {
+                return false;
+            }
+
+            var requestedDays =
+                (leaveRequest.EndDate - leaveRequest.StartDate).Days + 1;
+
+            if (leaveBalance.BalanceDays < requestedDays)
+            {
+                return false;
+            }
+
+            leaveBalance.BalanceDays -= requestedDays;
+
+            leaveRequest.Status = LeaveStatus.Approved;
+
+            await _leaveRepo.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<bool> RejectLeaveAsync(

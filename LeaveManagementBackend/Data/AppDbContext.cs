@@ -95,6 +95,36 @@ namespace LeaveManagementBackend.Data
                     Name = "Sick Leave"
                 }
             );
+
+            modelBuilder.Entity<LeaveBalance>().HasData(
+
+                new LeaveBalance
+                {
+                    Id = 1,
+                    UserId = 3, 
+                    LeaveTypeId = 1, 
+                    BalanceDays = 20,
+                    Year = 2026
+                },
+
+                new LeaveBalance
+                {
+                    Id = 2,
+                    UserId = 3,
+                    LeaveTypeId = 2, 
+                    BalanceDays = 10,
+                    Year = 2026
+                },
+
+                new LeaveBalance
+                {
+                    Id = 3,
+                    UserId = 3,
+                    LeaveTypeId = 3, 
+                    BalanceDays = 15,
+                    Year = 2026
+                }
+            );
         }
     }
 }
