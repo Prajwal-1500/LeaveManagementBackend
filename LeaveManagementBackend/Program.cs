@@ -1,7 +1,8 @@
 using LeaveManagementBackend.Data;
 using LeaveManagementBackend.Helper;
-using LeaveManagementBackend.Repository.Interfaces;
+using LeaveManagementBackend.Repositories.Implementation;
 using LeaveManagementBackend.Repository.Implementation;
+using LeaveManagementBackend.Repository.Interfaces;
 using LeaveManagementBackend.Services.Implementation;
 using LeaveManagementBackend.Services.Interfaces;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -52,6 +53,8 @@ namespace LeaveManagementBackend
             builder.Services.AddScoped<IJwtService, JwtService>();
             builder.Services.AddScoped<IAuthService, AuthService>();
             builder.Services.AddScoped<IUserRepository, UserRepository>();
+            builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
+            builder.Services.AddScoped<ILeaveService, LeaveService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
