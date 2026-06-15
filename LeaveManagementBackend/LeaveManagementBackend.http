@@ -1,19 +1,19 @@
 @LeaveManagementBackend_HostAddress = https://localhost:7209
-@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0eC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJIUkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IlByYWp3YWwgQWRtaW4iLCJleHAiOjE3ODE1MDAxNzQsImlzcyI6IkxlYXZlTWFuYWdlbWVudEJhY2tlbmQiLCJhdWQiOiJMZWF2ZU1hbmFnZW1lbnRVc2VycyJ9.JEkE-FAYgkcFnO7amo2QgD0AR6c8GJyqLDGUd-y_4ts
+@token=
 ###
-
 POST {{LeaveManagementBackend_HostAddress}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "admin@tx.com",
-  "password": "Admin123"
+  "email": "Dhruv@tx.com",
+  "password": "Dhruv123"
 }
 
 ###
 
 GET {{LeaveManagementBackend_HostAddress}}/api/leaves/my
 Authorization: Bearer {{token}}
+###
 
 POST {{LeaveManagementBackend_HostAddress}}/api/leaves
 Authorization: Bearer {{token}}
@@ -21,9 +21,9 @@ Content-Type: application/json
 
 {
   "leaveTypeId": 1,
-  "startDate": "2026-06-25",
-  "endDate": "2026-06-30",
-  "reason": "Family Function"
+  "startDate": "2026-07-02",
+  "endDate": "2026-07-05",
+  "reason": "checkup"
 }
 
 ###
@@ -35,8 +35,9 @@ Authorization: Bearer {{token}}
 
 GET {{LeaveManagementBackend_HostAddress}}/api/leaves/repotees
 Authorization: Bearer {{token}}
+###
 
-@id=2
+@id=1
 PUT {{LeaveManagementBackend_HostAddress}}/api/leaves/{{id}}/approve
 Authorization: Bearer {{token}}
 
@@ -44,5 +45,16 @@ Authorization: Bearer {{token}}
 ###
 
 GET {{LeaveManagementBackend_HostAddress}}/api/admin/employees
+Authorization: Bearer {{token}}
+###
+
+@month=7
+@year=2026
+GET {{LeaveManagementBackend_HostAddress}}/api/admin/reports/summary?month={{month}}&year={{year}}
+Authorization: Bearer {{token}}
+###
+
+@id=2
+PUT {{LeaveManagementBackend_HostAddress}}/api/leaves/{{id}}/reject
 Authorization: Bearer {{token}}
 ###

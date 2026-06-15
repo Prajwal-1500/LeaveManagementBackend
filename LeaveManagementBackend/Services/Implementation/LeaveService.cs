@@ -28,6 +28,7 @@ namespace LeaveManagementBackend.Services.Implementation
                 Requests = requests.Select(r => new LeaveRequestDto
                 {
                     Id = r.Id,
+                    EmployeeName = r.User.FirstName + " " + r.User.LastName,
                     LeaveType = r.LeaveType.Name,
                     StartDate = r.StartDate,
                     EndDate = r.EndDate,
@@ -56,10 +57,7 @@ namespace LeaveManagementBackend.Services.Implementation
                 return false;
             }
 
-            var hasOverlap = await _leaveRepo.HasOverlappingLeaveAsync(
-                userId,
-                dto.StartDate,
-                dto.EndDate);
+            var hasOverlap = await _leaveRepo.HasOverlappingLeaveAsync(userId, dto.StartDate,dto.EndDate);
 
             if (hasOverlap)
             {

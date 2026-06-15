@@ -23,5 +23,18 @@ namespace LeaveManagementBackend.Controllers
 
             return Ok(employees);
         }
+
+        [Authorize(Roles = "HRAdmin")]
+        [HttpGet("reports/summary")]
+        public async Task<IActionResult> GetMonthlySummary(int month, int year)
+        {
+            var result =
+                await _service.GetMonthlySummaryAsync(
+                    month,
+                    year);
+
+            return Ok(result);
+        }
     }
 }
+

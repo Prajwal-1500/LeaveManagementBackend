@@ -18,6 +18,7 @@ namespace LeaveManagementBackend.Repositories.Implementation
         public async Task<List<LeaveRequest>> GetByUserIdAsync(int userId)
         {
             return await _context.LeaveRequests
+                .Include(l => l.User)
                 .Include(l => l.LeaveType)
                 .Where(l => l.UserId == userId)
                 .ToListAsync();

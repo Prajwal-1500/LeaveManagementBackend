@@ -27,5 +27,15 @@ namespace LeaveManagementBackend.Repository.Implementation
                     u.Role == Role.Manager)
                 .ToListAsync();
          }
+
+        public async Task<List<LeaveRequest>> GetMonthlyLeaveRequestsAsync( int month,int year)
+        {
+            return await _context.LeaveRequests
+                .Include(l => l.User)
+                .Where(l =>
+                    l.StartDate.Month == month &&
+                    l.StartDate.Year == year)
+                .ToListAsync();
+        }
     }
 }

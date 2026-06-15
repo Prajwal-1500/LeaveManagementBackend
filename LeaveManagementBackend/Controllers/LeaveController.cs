@@ -44,7 +44,7 @@ namespace LeaveManagementBackend.Controllers
                     "Invalid leave request.");
             }
 
-            return Ok("Leave request submitted successfully.");
+            return Ok("Leave request submitted.");
         }
 
         [HttpPut("{id}/cancel")]
