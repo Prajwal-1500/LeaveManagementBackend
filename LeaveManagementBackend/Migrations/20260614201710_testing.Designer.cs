@@ -4,6 +4,7 @@ using LeaveManagementBackend.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace LeaveManagementBackend.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    partial class AppDbContextModelSnapshot : ModelSnapshot
+    [Migration("20260614201710_testing")]
+    partial class testing
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -197,7 +200,7 @@ namespace LeaveManagementBackend.Migrations
                             Email = "admin@tx.com",
                             FirstName = "Prajwal",
                             LastName = "Admin",
-                            PasswordHash = "$2a$11$W5PEMkt5qwgNzrqnyq.Yk.MKFVpdXma1378jZWKwMplo77ohxjgW.",
+                            PasswordHash = "$2a$11$QOYuXt1uXfcfNsTDkRgTD.hVpqiKEzDXzY5DyiTJPBhf5ZKk2qrZe",
                             Role = 10,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -208,7 +211,7 @@ namespace LeaveManagementBackend.Migrations
                             Email = "dhruv@tx.com",
                             FirstName = "Dhruv",
                             LastName = "Manager",
-                            PasswordHash = "$2a$11$Xp.0B2SDKpASuo2rQkqjP.DvmEM1/6rg0YJcXQqurFeIMUFUxIBRC",
+                            PasswordHash = "$2a$11$CXQPj1xhjpLVNIR4x2Bl5.DQLUuUTQ7cfVy0/6w.LeNnDGZy2uYFC",
                             Role = 11,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         },
@@ -220,7 +223,7 @@ namespace LeaveManagementBackend.Migrations
                             FirstName = "Rajat",
                             LastName = "Emp",
                             ManagerId = 2,
-                            PasswordHash = "$2a$11$03IjxoRl8BmB3LxSVOu6XuKxRjqe6PmLNCGNkV956EnhRpDkQ5chG",
+                            PasswordHash = "$2a$11$D7L/OJQC3U7NmGAIUuGE.exAleb2FEw42Eb.L4N2/Bqe63cJxi1e.",
                             Role = 12,
                             UpdatedAt = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified)
                         });

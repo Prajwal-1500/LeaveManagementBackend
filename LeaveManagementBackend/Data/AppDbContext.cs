@@ -73,8 +73,6 @@ namespace LeaveManagementBackend.Data
                       Role = Role.Employee,
                       ManagerId = 2
                   }
-
-
             );
 
 

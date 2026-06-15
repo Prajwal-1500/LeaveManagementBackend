@@ -55,10 +55,25 @@ namespace LeaveManagementBackend
             builder.Services.AddScoped<IUserRepository, UserRepository>();
             builder.Services.AddScoped<ILeaveRepository, LeaveRepository>();
             builder.Services.AddScoped<ILeaveService, LeaveService>();
+            builder.Services.AddScoped<IAdminRepository, AdminRepository>();
+
+            builder.Services.AddScoped<IAdminService, AdminService>();
 
             builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
+
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowReact",
+                    policy =>
+                    {
+                        policy
+                            .WithOrigins("http://localhost:5173")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
 
             var app = builder.Build();
 
@@ -70,6 +85,7 @@ namespace LeaveManagementBackend
 
             app.UseHttpsRedirection();
 
+            app.UseCors("AllowReact");
             app.UseAuthentication();
             app.UseAuthorization();
 

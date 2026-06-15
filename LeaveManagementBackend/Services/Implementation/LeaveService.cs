@@ -44,9 +44,7 @@ namespace LeaveManagementBackend.Services.Implementation
             };
         }
 
-        public async Task<bool> ApplyLeaveAsync(
-    ApplyLeaveDto dto,
-    int userId)
+        public async Task<bool> ApplyLeaveAsync( ApplyLeaveDto dto, int userId)
         {
             if (dto.StartDate.Date < DateTime.Today)
             {
@@ -85,9 +83,7 @@ namespace LeaveManagementBackend.Services.Implementation
             return true;
         }
 
-        public async Task<bool> CancelLeaveAsync(
-    int leaveRequestId,
-    int userId)
+        public async Task<bool> CancelLeaveAsync(int leaveRequestId,  int userId)
         {
             var leaveRequest = await _leaveRepo
                 .GetByIdAsync(leaveRequestId);
@@ -172,10 +168,21 @@ namespace LeaveManagementBackend.Services.Implementation
             return true;
         }
 
-        public async Task<bool> RejectLeaveAsync(
-            int leaveRequestId)
+        public async Task<bool> RejectLeaveAsync(int leaveRequestId)
         {
-            throw new NotImplementedException();
+            var leaveRequest = await _leaveRepo.GetByIdAsync(leaveRequestId);
+
+            if (leaveRequest == null)
+                return false;
+
+            if (leaveRequest.Status != LeaveStatus.Pending)
+                return false;
+
+            leaveRequest.Status = LeaveStatus.Rejected;
+
+            await _leaveRepo.SaveChangesAsync();
+
+            return true;
         }
 
 

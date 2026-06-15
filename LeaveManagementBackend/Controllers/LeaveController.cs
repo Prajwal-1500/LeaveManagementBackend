@@ -64,6 +64,7 @@ namespace LeaveManagementBackend.Controllers
             return Ok("Leave cancelled successfully.");
         }
 
+        [Authorize(Roles = "Manager")]
         [HttpGet("repotees")]
         public async Task<IActionResult> GetRepoteesRequests()
         {
@@ -76,6 +77,7 @@ namespace LeaveManagementBackend.Controllers
             return Ok(result);
         }
 
+        [Authorize(Roles = "Manager")]
         [HttpPut("{id}/approve")]
         public async Task<IActionResult> ApproveLeave(int id)
         {
@@ -91,6 +93,7 @@ namespace LeaveManagementBackend.Controllers
             return Ok("Leave approved successfully.");
         }
 
+        [Authorize(Roles = "Manager")]
         [HttpPut("{id}/reject")]
         public async Task<IActionResult> RejectLeave(int id)
         {
