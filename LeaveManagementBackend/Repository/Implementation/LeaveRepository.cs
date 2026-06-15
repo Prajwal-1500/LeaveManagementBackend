@@ -69,11 +69,12 @@ namespace LeaveManagementBackend.Repositories.Implementation
         public async Task<bool> HasOverlappingLeaveAsync(int userId, DateTime startDate, DateTime endDate)
         {
             return await _context.LeaveRequests.AnyAsync(l =>
-                l.UserId == userId &&
-                l.Status != LeaveStatus.Cancelled &&
-                startDate <= l.EndDate &&
-                endDate >= l.StartDate
-            );
+                 l.UserId == userId &&
+                 l.Status != LeaveStatus.Cancelled &&
+                 l.Status != LeaveStatus.Rejected &&
+                 startDate <= l.EndDate &&
+                 endDate >= l.StartDate
+             );
         }
 
         public async Task SaveChangesAsync()

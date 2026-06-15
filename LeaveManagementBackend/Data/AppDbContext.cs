@@ -51,7 +51,7 @@ namespace LeaveManagementBackend.Data
                     FirstName = "Prajwal",
                     LastName = "Admin",
                     Email = "admin@tx.com",
-                    PasswordHash = BCrypt.Net.BCrypt.HashPassword("Admin123"),
+                    PasswordHash = "$2a$11$SFpxXxGU5fvbEplsiJHDBOXB1oBXK4AszGlq/NYgNssdax35QKScm",
                     Role = Role.HRAdmin
                 },
                  new User
@@ -60,7 +60,7 @@ namespace LeaveManagementBackend.Data
                      FirstName = "Dhruv",
                      LastName = "Manager",
                      Email = "dhruv@tx.com",
-                     PasswordHash = BCrypt.Net.BCrypt.HashPassword("Dhruv123"),
+                     PasswordHash = "$2a$11$KlyHJ58LYt64WwHmIJpc4uiZI1WjdJnlPuZY6tG3iM7JvfAdvXqVq",
                      Role = Role.Manager
                  },
                   new User
@@ -69,60 +69,193 @@ namespace LeaveManagementBackend.Data
                       FirstName = "Rajat",
                       LastName = "Emp",
                       Email = "rajat@tx.com",
-                      PasswordHash = BCrypt.Net.BCrypt.HashPassword("Rajat123"),
+                      PasswordHash = "$2a$11$zxd3qBptSGxmYSYxWAX12ezaF6U0NFhQUh04yzqKoFLZ7EBa/Xk4a",
                       Role = Role.Employee,
                       ManagerId = 2
-                  }
+                  },
+                   new User
+                   {
+                       Id = 4,
+                       FirstName = "Jasneet",
+                       LastName = "Emp",
+                       Email = "jasneet@tx.com",
+                       PasswordHash = "$2a$11$LUn4hYzS/8KdNoO9/bgJZOaYIT6NNBYz4gmmbMXKN0vJDVZw3YreC",
+                       Role = Role.Employee,
+                       ManagerId = 2
+                   },
+                   new User
+                   {
+                       Id = 5,
+                       FirstName = "Raghav",
+                       LastName = "Emp",
+                       Email = "raghav@tx.com",
+                       PasswordHash = "$2a$11$jm.xcSXsIYMyEl02IwuhE.1/yOcTmEkriLZciVfTzQgrg7j6D2vnW",
+                       Role = Role.Employee,
+                       ManagerId = 2
+                   },
+                    new User
+                    {
+                        Id = 6,
+                        FirstName = "Hardil",
+                        LastName = "Emp",
+                        Email = "hardil@tx.com",
+                        PasswordHash = "$2a$11$20Lh2SMf2TOGRYzUWL6HDOOw0kj/ymH1YqLdm8RxB8FBP27sCTCsK",
+                        Role = Role.Employee,
+                        ManagerId = 2
+                    }
             );
 
 
-            modelBuilder.Entity<LeaveType>().HasData(
-                new LeaveType
-                {
-                    Id = 1,
-                    Name = "Annual Leave"
-                },
-                new LeaveType
-                {
-                    Id = 2,
-                    Name = "Unpaid Leave"
-                },
-                new LeaveType
-                {
-                    Id = 3,
-                    Name = "Sick Leave"
-                }
-            );
+                modelBuilder.Entity<LeaveType>().HasData(
+                    new LeaveType
+                    {
+                        Id = 1,
+                        Name = "Annual Leave"
+                    },
+                    new LeaveType
+                    {
+                        Id = 2,
+                        Name = "Unpaid Leave"
+                    },
+                    new LeaveType
+                    {
+                        Id = 3,
+                        Name = "Sick Leave"
+                    }
+                );
 
             modelBuilder.Entity<LeaveBalance>().HasData(
-
+    
                 new LeaveBalance
                 {
                     Id = 1,
-                    UserId = 3, 
-                    LeaveTypeId = 1, 
+                    UserId = 3,
+                    LeaveTypeId = 1,
                     BalanceDays = 20,
                     Year = 2026
                 },
-
                 new LeaveBalance
                 {
                     Id = 2,
                     UserId = 3,
-                    LeaveTypeId = 2, 
+                    LeaveTypeId = 2,
                     BalanceDays = 10,
                     Year = 2026
                 },
-
                 new LeaveBalance
                 {
                     Id = 3,
                     UserId = 3,
-                    LeaveTypeId = 3, 
+                    LeaveTypeId = 3,
+                    BalanceDays = 15,
+                    Year = 2026
+                },
+
+    
+                new LeaveBalance
+                {
+                    Id = 4,
+                    UserId = 2,
+                    LeaveTypeId = 1,
+                    BalanceDays = 20,
+                    Year = 2026
+                },
+                new LeaveBalance
+                {
+                    Id = 5,
+                    UserId = 2,
+                    LeaveTypeId = 2,
+                    BalanceDays = 10,
+                    Year = 2026
+                },
+                new LeaveBalance
+                {
+                    Id = 6,
+                    UserId = 2,
+                    LeaveTypeId = 3,
+                    BalanceDays = 15,
+                    Year = 2026
+                },
+
+    
+                new LeaveBalance
+                {
+                    Id = 7,
+                    UserId = 4,
+                    LeaveTypeId = 1,
+                    BalanceDays = 20,
+                    Year = 2026
+                },
+                new LeaveBalance
+                {
+                    Id = 8,
+                    UserId = 4,
+                    LeaveTypeId = 2,
+                    BalanceDays = 10,
+                    Year = 2026
+                },
+                new LeaveBalance
+                {
+                    Id = 9,
+                    UserId = 4,
+                    LeaveTypeId = 3,
+                    BalanceDays = 15,
+                    Year = 2026
+                },
+
+    
+                new LeaveBalance
+                {
+                    Id = 10,
+                    UserId = 5,
+                    LeaveTypeId = 1,
+                    BalanceDays = 20,
+                    Year = 2026
+                },
+                new LeaveBalance
+                {
+                    Id = 11,
+                    UserId = 5,
+                    LeaveTypeId = 2,
+                    BalanceDays = 10,
+                    Year = 2026
+                },
+                new LeaveBalance
+                {
+                    Id = 12,
+                    UserId = 5,
+                    LeaveTypeId = 3,
+                    BalanceDays = 15,
+                    Year = 2026
+                },
+
+    
+                new LeaveBalance
+                {
+                    Id = 13,
+                    UserId = 6,
+                    LeaveTypeId = 1,
+                    BalanceDays = 20,
+                    Year = 2026
+                },
+                new LeaveBalance
+                {
+                    Id = 14,
+                    UserId = 6,
+                    LeaveTypeId = 2,
+                    BalanceDays = 10,
+                    Year = 2026
+                },
+                new LeaveBalance
+                {
+                    Id = 15,
+                    UserId = 6,
+                    LeaveTypeId = 3,
                     BalanceDays = 15,
                     Year = 2026
                 }
             );
+
         }
     }
 }

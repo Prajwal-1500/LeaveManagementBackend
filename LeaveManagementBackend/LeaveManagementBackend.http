@@ -1,12 +1,12 @@
 @LeaveManagementBackend_HostAddress = https://localhost:7209
-@token=
+@token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9uYW1laWRlbnRpZmllciI6IjEiLCJodHRwOi8vc2NoZW1hcy54bWxzb2FwLm9yZy93cy8yMDA1LzA1L2lkZW50aXR5L2NsYWltcy9lbWFpbGFkZHJlc3MiOiJhZG1pbkB0eC5jb20iLCJodHRwOi8vc2NoZW1hcy5taWNyb3NvZnQuY29tL3dzLzIwMDgvMDYvaWRlbnRpdHkvY2xhaW1zL3JvbGUiOiJIUkFkbWluIiwiaHR0cDovL3NjaGVtYXMueG1sc29hcC5vcmcvd3MvMjAwNS8wNS9pZGVudGl0eS9jbGFpbXMvbmFtZSI6IlByYWp3YWwgQWRtaW4iLCJleHAiOjE3ODE1Mzg1NzQsImlzcyI6IkxlYXZlTWFuYWdlbWVudEJhY2tlbmQiLCJhdWQiOiJMZWF2ZU1hbmFnZW1lbnRVc2VycyJ9.FuajR4XjDETQOlTzjEwf9cTc5KJ3S_sQ1oQ-XwpOlVE
 ###
 POST {{LeaveManagementBackend_HostAddress}}/api/auth/login
 Content-Type: application/json
 
 {
-  "email": "Dhruv@tx.com",
-  "password": "Dhruv123"
+  "email": "Admin@tx.com",
+  "password": "Admin123"
 }
 
 ###

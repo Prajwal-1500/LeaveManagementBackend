@@ -64,6 +64,14 @@ namespace LeaveManagementBackend.Services.Implementation
                 return false;
             }
 
+            var requestedDays = (dto.EndDate - dto.StartDate).Days + 1;
+            var leaveBalance = await _leaveRepo.GetLeaveBalanceAsync(userId, dto.LeaveTypeId, dto.StartDate.Year);
+            
+            if (leaveBalance == null || leaveBalance.BalanceDays < requestedDays)
+            {
+                  return false;
+             }
+
             var leaveRequest = new LeaveRequest
             {
                 UserId = userId,
