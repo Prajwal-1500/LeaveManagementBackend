@@ -1,4 +1,4 @@
-﻿using LeaveManagementBackend.Models;
+using LeaveManagementBackend.Models;
 namespace LeaveManagementBackend.Repository.Interfaces
 {
     public interface ILeaveRepository
@@ -7,7 +7,7 @@ namespace LeaveManagementBackend.Repository.Interfaces
         Task<LeaveRequest?> GetByIdAsync(int leaveRequestId);
         Task AddAsync(LeaveRequest leaveRequest);
 
-        Task<List<LeaveRequest>> GetRepoteesRequestsAsync(int managerId);
+        Task<List<LeaveRequest>> GetTeamRequestsAsync(int managerId);
 
         Task<LeaveBalance?> GetLeaveBalanceAsync(
             int userId,

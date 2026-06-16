@@ -1,4 +1,4 @@
-﻿using LeaveManagementBackend.Enums;
+using LeaveManagementBackend.Enums;
 namespace LeaveManagementBackend.Models
 {
     public class LeaveRequest
@@ -12,6 +12,7 @@ namespace LeaveManagementBackend.Models
         public DateTime EndDate { get; set; }
         public string Reason { get; set; } = string.Empty;
         public LeaveStatus Status { get; set; }
+        public string? RejectionReason { get; set; }
 
     }
 }

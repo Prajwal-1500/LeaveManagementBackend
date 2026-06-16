@@ -1,4 +1,4 @@
-﻿using LeaveManagementBackend.DTOs.Leave;
+using LeaveManagementBackend.DTOs.Leave;
 using LeaveManagementBackend.Enums;
 using LeaveManagementBackend.Models;
 using LeaveManagementBackend.Repository.Interfaces;
@@ -116,9 +116,9 @@ namespace LeaveManagementBackend.Services.Implementation
             return true;
         }
 
-        public async Task<List<LeaveRequestDto>> GetRepoteesRequestsAsync(int managerId)
+        public async Task<List<LeaveRequestDto>> GetTeamRequestsAsync(int managerId)
         {
-            var requests = await _leaveRepo.GetRepoteesRequestsAsync(managerId);
+            var requests = await _leaveRepo.GetTeamRequestsAsync(managerId);
 
             return requests.Select(r => new LeaveRequestDto
             {
@@ -174,7 +174,7 @@ namespace LeaveManagementBackend.Services.Implementation
             return true;
         }
 
-        public async Task<bool> RejectLeaveAsync(int leaveRequestId)
+        public async Task<bool> RejectLeaveAsync(int leaveRequestId, string reason)
         {
             var leaveRequest = await _leaveRepo.GetByIdAsync(leaveRequestId);
 
@@ -185,6 +185,7 @@ namespace LeaveManagementBackend.Services.Implementation
                 return false;
 
             leaveRequest.Status = LeaveStatus.Rejected;
+            leaveRequest.RejectionReason = reason;
 
             await _leaveRepo.SaveChangesAsync();
 

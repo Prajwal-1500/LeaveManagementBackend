@@ -1,4 +1,4 @@
-﻿using LeaveManagementBackend.Data;
+using LeaveManagementBackend.Data;
 using LeaveManagementBackend.Enums;
 using LeaveManagementBackend.Models;
 using LeaveManagementBackend.Repository.Interfaces;
@@ -37,7 +37,7 @@ namespace LeaveManagementBackend.Repositories.Implementation
             await _context.LeaveRequests.AddAsync(leaveRequest);
         }
 
-        public async Task<List<LeaveRequest>> GetRepoteesRequestsAsync(int managerId)
+        public async Task<List<LeaveRequest>> GetTeamRequestsAsync(int managerId)
         {
             return await _context.LeaveRequests
                 .Include(l => l.User)

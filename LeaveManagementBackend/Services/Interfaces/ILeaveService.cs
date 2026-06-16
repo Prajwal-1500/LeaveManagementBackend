@@ -1,4 +1,4 @@
-﻿using LeaveManagementBackend.DTOs.Leave;
+using LeaveManagementBackend.DTOs.Leave;
 
 namespace LeaveManagementBackend.Services.Interfaces
 {
@@ -14,11 +14,12 @@ namespace LeaveManagementBackend.Services.Interfaces
             int leaveRequestId,
             int userId);
 
-        Task<List<LeaveRequestDto>> GetRepoteesRequestsAsync(
+        Task<List<LeaveRequestDto>> GetTeamRequestsAsync(
             int managerId);
 
         Task<bool> RejectLeaveAsync(
-            int leaveRequestId);
+            int leaveRequestId,
+            string reason);
 
         Task<bool> ApproveLeaveAsync(
             int leaveRequestId);

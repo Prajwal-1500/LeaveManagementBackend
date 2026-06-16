@@ -1,8 +1,9 @@
-﻿using LeaveManagementBackend.DTOs.Leave;
+using LeaveManagementBackend.DTOs.Leave;
 using LeaveManagementBackend.Services.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Security.Claims;
+
 
 namespace LeaveManagementBackend.Controllers
 {
@@ -65,14 +66,14 @@ namespace LeaveManagementBackend.Controllers
         }
 
         [Authorize(Roles = "Manager")]
-        [HttpGet("repotees")]
-        public async Task<IActionResult> GetRepoteesRequests()
+        [HttpGet("team")]
+        public async Task<IActionResult> GetTeamRequests()
         {
             var managerId = int.Parse(
                 User.FindFirst(ClaimTypes.NameIdentifier)!.Value);
 
             var result = await _leaveService
-                .GetRepoteesRequestsAsync(managerId);
+                .GetTeamRequestsAsync(managerId);
 
             return Ok(result);
         }
@@ -95,10 +96,10 @@ namespace LeaveManagementBackend.Controllers
 
         [Authorize(Roles = "Manager")]
         [HttpPut("{id}/reject")]
-        public async Task<IActionResult> RejectLeave(int id)
+        public async Task<IActionResult> RejectLeave(int id, [FromBody] RejectLeaveDto dto)
         {
             var result = await _leaveService
-                .RejectLeaveAsync(id);
+                .RejectLeaveAsync(id, dto.Reason);
 
             if (!result)
             {

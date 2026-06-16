@@ -69,13 +69,25 @@ namespace LeaveManagementBackend
                     policy =>
                     {
                         policy
-                            .WithOrigins("http://localhost:5173")
+                            .WithOrigins("http://localhost:5173", "http://localhost:5174")
                             .AllowAnyHeader()
                             .AllowAnyMethod();
                     });
             });
 
             var app = builder.Build();
+
+            // Apply pending EF Core migrations on startup
+            using (var scope = app.Services.CreateScope())
+            {
+                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+                try
+                {
+                    db.Database.ExecuteSqlRaw("DELETE FROM __EFMigrationsHistory WHERE MigrationId = '20260616094525_rejReason'");
+                }
+                catch { }
+                db.Database.Migrate();
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
