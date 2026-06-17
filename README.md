@@ -37,3 +37,41 @@ The system follows a role-based workflow and enforces important business rules s
 - Rejected or cancelled leaves do not deduct balance
 - Managers cannot approve already rejected or cancelled requests
 - Employees can access only their own leave records
+
+### Technology Stack
+
+#### Backend
+- ASP.NET Core Web API
+- Entity Framework Core
+- SQL Workbench for database management
+
+### Project Setup
+
+#### Prerequisites
+-.NET SDK (8.0 or later)
+-Node.js (18 or later)
+-MySQL Server
+
+#### Database Setup
+- Configure your MySQL connection string in:
+  LeaveManagementBackend/appsettings.json
+  under:
+
+ "ConnectionStrings": {
+   "DefaultConnection": "server=localhost;database=LeaveManagementDb;user=root;password=yourpassword"
+  }
+
+#### Running the Backend
+- Open Package Manager Console
+- Run Command: cd LeaveManagementBackend
+- Restore NuGet packages: dotnet restore
+- Apply database migrations: dotnet ef database update
+- Run the backend server: dotnet run
+
+-The API will be available at:
+
+https://localhost:7209
+http://localhost:5250
+
+#### Running Tests
+- Execute Command: dotnet test

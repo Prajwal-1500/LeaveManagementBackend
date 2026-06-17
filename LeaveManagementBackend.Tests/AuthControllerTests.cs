@@ -20,7 +20,7 @@ namespace LeaveManagementBackend.Tests
         [Fact]
         public async Task Login_ValidCredentials_ReturnsOkWithToken()
         {
-            // Arrange
+          
             var loginDto = new LoginDto
             {
                 Email = "admin@tx.com",
@@ -40,10 +40,10 @@ namespace LeaveManagementBackend.Tests
                 .Setup(s => s.LoginAsync(It.IsAny<LoginDto>()))
                 .ReturnsAsync(responseDto);
 
-            // Act
+            
             var result = await _controller.Login(loginDto);
 
-            // Assert
+            
             var okResult = Assert.IsType<OkObjectResult>(result);
             var returnedDto = Assert.IsType<ResponseDto>(okResult.Value);
             Assert.Equal("admin@tx.com", returnedDto.Email);
@@ -54,7 +54,7 @@ namespace LeaveManagementBackend.Tests
         [Fact]
         public async Task Login_InvalidCredentials_ReturnsUnauthorized()
         {
-            // Arrange
+            
             var loginDto = new LoginDto
             {
                 Email = "wrong@tx.com",
@@ -65,10 +65,10 @@ namespace LeaveManagementBackend.Tests
                 .Setup(s => s.LoginAsync(It.IsAny<LoginDto>()))
                 .ReturnsAsync((ResponseDto)null!);
 
-            // Act
+            
             var result = await _controller.Login(loginDto);
 
-            // Assert
+            
             var unauthorizedResult = Assert.IsType<UnauthorizedObjectResult>(result);
             Assert.Equal("Invalid email or password", unauthorizedResult.Value);
         }
@@ -76,7 +76,7 @@ namespace LeaveManagementBackend.Tests
         [Fact]
         public async Task Login_ServiceCalled_WithCorrectDto()
         {
-            // Arrange
+            
             var loginDto = new LoginDto
             {
                 Email = "test@tx.com",
@@ -94,10 +94,10 @@ namespace LeaveManagementBackend.Tests
                     Token = "token"
                 });
 
-            // Act
+            
             await _controller.Login(loginDto);
 
-            // Assert
+            
             _mockAuthService.Verify(
                 s => s.LoginAsync(It.Is<LoginDto>(
                     d => d.Email == "test@tx.com" && d.Password == "test123")),

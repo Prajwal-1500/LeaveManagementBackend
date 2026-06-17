@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace LeaveManagementBackend.Controllers
 {
-
     [Route("api/admin")]
     [ApiController]
     [Authorize(Roles = "HRAdmin")]

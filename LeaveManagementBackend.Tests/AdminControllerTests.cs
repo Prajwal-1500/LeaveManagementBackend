@@ -23,7 +23,7 @@ namespace LeaveManagementBackend.Tests
         [Fact]
         public async Task GetEmployees_ReturnsOk_WithEmployeesList()
         {
-            // Arrange
+            
             var employees = new List<EmployeesDto>
             {
                 new EmployeesDto { Id = 1, FullName = "John Doe", Email = "john@example.com", ManagerName = "Manager Joe" },
@@ -34,10 +34,10 @@ namespace LeaveManagementBackend.Tests
                 .Setup(s => s.GetEmployeesAsync())
                 .ReturnsAsync(employees);
 
-            // Act
+            
             var result = await _controller.GetEmployees();
 
-            // Assert
+            
             var okResult = Assert.IsType<OkObjectResult>(result);
             var returnedEmployees = Assert.IsType<List<EmployeesDto>>(okResult.Value);
             Assert.Equal(2, returnedEmployees.Count);
@@ -47,7 +47,7 @@ namespace LeaveManagementBackend.Tests
         [Fact]
         public async Task GetMonthlySummary_ReturnsOk_WithSummaryList()
         {
-            // Arrange
+            
             var summary = new List<LeaveSummaryDto>
             {
                 new LeaveSummaryDto { EmployeeName = "John Doe", TotalRequests = 3, PendingLeaves = 1, ApprovedLeaves = 1, RejectedLeaves = 1, CancelledLeaves = 0 },
@@ -58,10 +58,10 @@ namespace LeaveManagementBackend.Tests
                 .Setup(s => s.GetMonthlySummaryAsync(6, 2026))
                 .ReturnsAsync(summary);
 
-            // Act
+            
             var result = await _controller.GetMonthlySummary(6, 2026);
 
-            // Assert
+           
             var okResult = Assert.IsType<OkObjectResult>(result);
             var returnedSummary = Assert.IsType<List<LeaveSummaryDto>>(okResult.Value);
             Assert.Equal(2, returnedSummary.Count);
