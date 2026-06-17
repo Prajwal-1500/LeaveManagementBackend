@@ -91,8 +91,7 @@ namespace LeaveManagementBackend.Services.Implementation
 
         public async Task<bool> CancelLeaveAsync(int leaveRequestId,  int userId)
         {
-            var leaveRequest = await _leaveRepo
-                .GetByIdAsync(leaveRequestId);
+            var leaveRequest = await _leaveRepo.GetByIdAsync(leaveRequestId);
 
             if (leaveRequest == null)
             {

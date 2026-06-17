@@ -77,17 +77,17 @@ namespace LeaveManagementBackend
 
             var app = builder.Build();
 
-            // Apply pending EF Core migrations on startup
-            using (var scope = app.Services.CreateScope())
-            {
-                var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-                try
-                {
-                    db.Database.ExecuteSqlRaw("DELETE FROM __EFMigrationsHistory WHERE MigrationId = '20260616094525_rejReason'");
-                }
-                catch { }
-                db.Database.Migrate();
-            }
+            //// Apply pending EF Core migrations on startup
+            //using (var scope = app.Services.CreateScope())
+            //{
+            //    var db = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+            //    try
+            //    {
+            //        db.Database.ExecuteSqlRaw("DELETE FROM __EFMigrationsHistory WHERE MigrationId = '20260616094525_rejReason'");
+            //    }
+            //    catch { }
+            //    db.Database.Migrate();
+            //}
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
